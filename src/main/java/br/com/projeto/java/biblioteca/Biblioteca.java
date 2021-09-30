@@ -1,4 +1,4 @@
-package br.com.projeto.java;
+package br.com.projeto.java.biblioteca;
 
 public interface Biblioteca {
     void emprestar();
