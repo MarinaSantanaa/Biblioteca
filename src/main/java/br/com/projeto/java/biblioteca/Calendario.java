@@ -9,10 +9,10 @@ import static java.time.DayOfWeek.SUNDAY;
 @Value
 
 public class Calendario{
-    private List<LocalDate> feriados;
+    List<LocalDate> feriados;
 
     public Calendario(){
-        feriados = new ArrayList<LocalDate>();
+        feriados = new ArrayList<>();
         listaFeriados();
     }
 
@@ -26,6 +26,7 @@ public class Calendario{
         feriados.add(LocalDate.of(2021, 11, 2));
         feriados.add(LocalDate.of(2021, 11, 15));
         feriados.add(LocalDate.of(2021, 12, 25));
+        Collections.sort(feriados);
     }
 
     private LocalDate proximoFeriado(LocalDate dataInformada){
