@@ -14,6 +14,9 @@ public abstract class Pessoa {
     private String nome;
     private String matricula;
     private String email;
+    private LocalDate dataEmprestimo;
+    private LocalDate dataDevolucao;
     private LocalDate dataBloqueio;
     private int qtdDiasBloqueados;
+    private int qtdLivrosEmprestados;
 }
