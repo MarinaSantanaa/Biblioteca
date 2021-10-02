@@ -8,16 +8,16 @@ public class AplicacaoAlmir {
     public static void main(String[] args) {
         Calendario calendario = new Calendario();
 
-        LocalDate informado = LocalDate.parse("2021-10-01");
         //System.out.println(calendario.proximoFeriado(informado));
-
+        LocalDate informado = LocalDate.parse("2021-10-01");
         System.out.println("inicio: " +informado);
-        int contador = calendario.calcularDiasUteis(20, informado);
-//        System.out.println("numero de vezes: " + contador);
-//        System.out.println("fim: "+ informado.plusDays(contador));
+        int contador = calendario.calcularDiasUteis(10, informado);
+        System.out.println("numero de vezes: " + contador);
+        System.out.println("fim: "+ informado.plusDays(contador));
 
-        contador = calendario.calcularAtraso(informado, LocalDate.parse("2021-10-20"));
-        System.out.println("contador: "+ contador);
+
+        //contador = calendario.calcularAtraso(informado, LocalDate.parse("2021-10-10"));
+        //System.out.println("contador: "+ contador);
 
 
 

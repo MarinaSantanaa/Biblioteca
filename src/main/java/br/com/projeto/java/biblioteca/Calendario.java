@@ -17,20 +17,20 @@ public class Calendario{
     }
 
     private void listaFeriados(){
-        this.feriados.add(LocalDate.parse("2021-11-02"));
-        this.feriados.add(LocalDate.parse("2021-10-05"));
-        this.feriados.add(LocalDate.parse("2021-10-06"));
-        this.feriados.add(LocalDate.parse("2021-10-11"));
-        this.feriados.add(LocalDate.parse("2021-11-02"));
-        this.feriados.add(LocalDate.parse("2021-10-18"));
-        this.feriados.add(LocalDate.parse("2021-11-30"));
-        Collections.sort(this.feriados);
+        feriados.add(LocalDate.of(2021, 1, 1));
+        feriados.add(LocalDate.of(2021, 4, 2));
+        feriados.add(LocalDate.of(2021, 4, 21));
+        feriados.add(LocalDate.of(2021, 5, 1));
+        feriados.add(LocalDate.of(2021, 9, 7));
+        feriados.add(LocalDate.of(2021, 10, 12));
+        feriados.add(LocalDate.of(2021, 11, 2));
+        feriados.add(LocalDate.of(2021, 11, 15));
+        feriados.add(LocalDate.of(2021, 12, 25));
     }
 
     private LocalDate proximoFeriado(LocalDate dataInformada){
         for(LocalDate feriado : feriados){
             if(dataInformada.isEqual(feriado) || dataInformada.isBefore(feriado)){
-                System.out.println(feriado);
                 return feriado;
             }
         }
