@@ -12,10 +12,11 @@ public class AplicacaoAlmir {
         //System.out.println(calendario.proximoFeriado(informado));
 
         System.out.println("inicio: " +informado);
-        int contador = calendario.calcularDiasUteis(5, informado);
-        System.out.println("fim: "+ informado.plusDays(contador));
+        int contador = calendario.calcularDiasUteis(20, informado);
+//        System.out.println("numero de vezes: " + contador);
+//        System.out.println("fim: "+ informado.plusDays(contador));
 
-        contador = calendario.calcularAtraso(informado, LocalDate.parse("2021-10-06"));
+        contador = calendario.calcularAtraso(informado, LocalDate.parse("2021-10-20"));
         System.out.println("contador: "+ contador);
 
 
