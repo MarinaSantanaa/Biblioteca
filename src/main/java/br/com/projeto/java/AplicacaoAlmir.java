@@ -13,6 +13,7 @@ public class AplicacaoAlmir {
         List<Aluno> alunos = new ArrayList();
         List<Professor> professores = new ArrayList();
         List<Livro> livros = new ArrayList();
+
         listaAlunos(alunos);
         //exibirAlunos(alunos);
         listaProfessores(professores);
@@ -39,16 +40,16 @@ public class AplicacaoAlmir {
     }
 
     private static List listaProfessores(List<Professor> professores) {
-        professores.add(new Professor("Maria","1","maria@grupoam.com",null,null,null,0,0));
-        professores.add(new Professor("João","1","joao@grupoam.com", LocalDate.of(2021,10,01),LocalDate.of(2021,10,10),LocalDate.of(2021,10,13),3,0));
-        professores.add(new Professor("Pedro","1","pedro@grupoam.com",null,null,null,0,0));
-        professores.add(new Professor("Marina","1","marina@grupoam.com",LocalDate.of(2021,9,25),LocalDate.of(2021,10,5),null,0,5));
-        professores.add(new Professor("Alexandre","1","alexandre@grupoam.com",null,null,null,0,0));
-        professores.add(new Professor("Adan","1","adan@grupoam.com",LocalDate.of(2021,9,20),LocalDate.of(2021,10,01),LocalDate.of(2021,10,5),5,0));
-        professores.add(new Professor("Ana","1","ana@grupoam.com",null,null,null,0,0));
-        professores.add(new Professor("Antonio","1","antonio@grupoam.com",null,null,null,0,0));
-        professores.add(new Professor("José","1","jose@grupoam.com",LocalDate.of(2021,10,01),LocalDate.of(2021,10,13),null,0,2));
-        professores.add(new Professor("Joana","1","joana@grupoam.com",null,null,null,0,0));
+        professores.add(new Professor("Maria","1","maria@grupoam.com",null,null,null,0,0, null));
+        professores.add(new Professor("João","1","joao@grupoam.com", LocalDate.of(2021,10,01),LocalDate.of(2021,10,10),LocalDate.of(2021,10,13),3,0, null));
+        professores.add(new Professor("Pedro","1","pedro@grupoam.com",null,null,null,0,0, null));
+        professores.add(new Professor("Marina","1","marina@grupoam.com",LocalDate.of(2021,9,25),LocalDate.of(2021,10,5),null,0,5, new ArrayList<>()));
+        professores.add(new Professor("Alexandre","1","alexandre@grupoam.com",null,null,null,0,0, null));
+        professores.add(new Professor("Adan","1","adan@grupoam.com",LocalDate.of(2021,9,20),LocalDate.of(2021,10,01),LocalDate.of(2021,10,5),5,0, null));
+        professores.add(new Professor("Ana","1","ana@grupoam.com",null,null,null,0,0, null));
+        professores.add(new Professor("Antonio","1","antonio@grupoam.com",null,null,null,0,0, null));
+        professores.add(new Professor("José","1","jose@grupoam.com",LocalDate.of(2021,10,01),LocalDate.of(2021,10,13),null,0,2, new ArrayList<>()));
+        professores.add(new Professor("Joana","1","joana@grupoam.com",null,null,null,0,0, null));
         return professores;
     }
 
@@ -59,16 +60,16 @@ public class AplicacaoAlmir {
     }
 
     public static List listaAlunos(List alunos){
-        alunos.add(new Aluno("Maria","1","maria@grupoam.com",null,null,null,0,0));
-        alunos.add(new Aluno("João","1","joao@grupoam.com", LocalDate.of(2021,10,01),LocalDate.of(2021,10,10),LocalDate.of(2021,10,13),3,0));
-        alunos.add(new Aluno("Pedro","1","pedro@grupoam.com",null,null,null,0,0));
-        alunos.add(new Aluno("Marina","1","marina@grupoam.com",LocalDate.of(2021,9,25),LocalDate.of(2021,10,5),null,0,1));
-        alunos.add(new Aluno("Alexandre","1","alexandre@grupoam.com",null,null,null,0,0));
-        alunos.add(new Aluno("Adan","1","adan@grupoam.com",LocalDate.of(2021,9,20),LocalDate.of(2021,10,01),LocalDate.of(2021,10,5),5,0));
-        alunos.add(new Aluno("Ana","1","ana@grupoam.com",null,null,null,0,0));
-        alunos.add(new Aluno("Antonio","1","antonio@grupoam.com",null,null,null,0,0));
-        alunos.add(new Aluno("José","1","jose@grupoam.com",LocalDate.of(2021,10,01),LocalDate.of(2021,10,13),null,0,3));
-        alunos.add(new Aluno("Joana","1","joana@grupoam.com",null,null,null,0,0));
+        alunos.add(new Aluno("Maria","1","maria@grupoam.com",null,null,null,0,0, null));
+        alunos.add(new Aluno("João","1","joao@grupoam.com", LocalDate.of(2021,10,01),LocalDate.of(2021,10,10),LocalDate.of(2021,10,13),3,0, null));
+        alunos.add(new Aluno("Pedro","1","pedro@grupoam.com",null,null,null,0,0, null));
+        alunos.add(new Aluno("Marina","1","marina@grupoam.com",LocalDate.of(2021,9,25),LocalDate.of(2021,10,5),null,0,1, new ArrayList<>()));
+        alunos.add(new Aluno("Alexandre","1","alexandre@grupoam.com",null,null,null,0,0, null));
+        alunos.add(new Aluno("Adan","1","adan@grupoam.com",LocalDate.of(2021,9,20),LocalDate.of(2021,10,01),LocalDate.of(2021,10,5),5,0, null));
+        alunos.add(new Aluno("Ana","1","ana@grupoam.com",null,null,null,0,0, null));
+        alunos.add(new Aluno("Antonio","1","antonio@grupoam.com",null,null,null,0,0, null));
+        alunos.add(new Aluno("José","1","jose@grupoam.com",LocalDate.of(2021,10,01),LocalDate.of(2021,10,13),null,0,3, new ArrayList<>()));
+        alunos.add(new Aluno("Joana","1","joana@grupoam.com",null,null,null,0,0, null));
         return alunos;
     }
 }

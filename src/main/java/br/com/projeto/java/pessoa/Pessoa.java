@@ -1,8 +1,9 @@
 package br.com.projeto.java.pessoa;
 
 import lombok.*;
-
+import br.com.projeto.java.biblioteca.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -19,4 +20,5 @@ public abstract class Pessoa {
     private LocalDate dataBloqueio;
     private int qtdDiasBloqueados;
     private int qtdLivrosEmprestados;
+    private List<Livro> livros;
 }
