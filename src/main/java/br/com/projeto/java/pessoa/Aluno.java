@@ -1,7 +1,11 @@
 package br.com.projeto.java.pessoa;
 import br.com.projeto.java.biblioteca.*;
+import lombok.*;
 import java.time.LocalDate;
 import java.util.List;
+
+@Getter
+@NoArgsConstructor
 
 public class Aluno extends Pessoa {
     public static final int QTD_LIVROS = 3;

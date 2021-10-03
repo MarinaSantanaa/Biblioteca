@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aplicacao {
+public class AplicacaoNeto {
     public static void main(String[] args) {
         Calendario calendario = new Calendario();
         List<Aluno> alunos = new ArrayList();
@@ -18,8 +18,34 @@ public class Aplicacao {
         //exibirAlunos(alunos);
         listaProfessores(professores);
         listaLivros(livros);
+        List<Livro> livroSelecionados = new ArrayList<>();
+        livroSelecionados.add(livros.get(0));
+        livroSelecionados.add(livros.get(3));
+    emprestar(professores.get(1), livroSelecionados, LocalDate.of(2021,10,03), calendario);
+       exibirProfessores(professores);
 
 
+    }
+
+    public static void emprestar(Pessoa pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
+
+        if(pessoa instanceof Aluno) {
+            Aluno aluno1 = new Aluno();
+            aluno1 = (Aluno) pessoa;
+            aluno1.setDataEmprestimo(dataEmprestimo);
+           int dataDevolucao = calendario.calcularDiasUteis(aluno1.DIAS_UTEIS, dataEmprestimo);
+           aluno1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
+           aluno1.setLivros(livros);
+           aluno1.setQtdLivrosEmprestados(livros.size());
+        } else {
+            Professor professor1 = new Professor();
+            professor1 = (Professor) pessoa;
+            professor1.setDataEmprestimo(dataEmprestimo);
+            int dataDevolucao = calendario.calcularDiasUteis(professor1.DIAS_UTEIS, dataEmprestimo);
+            professor1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
+            professor1.setLivros(livros);
+            professor1.setQtdLivrosEmprestados(livros.size());
+        }
 
 
 
@@ -39,6 +65,11 @@ public class Aplicacao {
         return livros;
     }
 
+    private static void exibirProfessores(List<Professor> professores) {
+        for (Professor professor : professores) {
+            System.out.println(professor);
+        }
+    }
     private static List listaProfessores(List<Professor> professores) {
         professores.add(new Professor("Maria","1","maria@grupoam.com",null,null,null,0,0, null));
         professores.add(new Professor("João","1","joao@grupoam.com", LocalDate.of(2021,10,01),LocalDate.of(2021,10,10),LocalDate.of(2021,10,13),3,0, null));
