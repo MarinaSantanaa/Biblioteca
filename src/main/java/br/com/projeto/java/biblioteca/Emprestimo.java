@@ -12,7 +12,6 @@ public class Emprestimo implements Biblioteca {
     Date diaEmprestimo;
     Date diaDevolucao;
 
-
     @Override
     public void emprestar() {
 
@@ -38,7 +37,7 @@ public class Emprestimo implements Biblioteca {
             }
 
         } else {
-            if (pessoa.getDataDevolucao().equals(null)) {
+            if (pessoa.getDataDevolucao() == null) {
                 if (pessoa.getQtdLivrosEmprestados() < Professor.QTD_LIVROS) {
                     Professor professor1 = new Professor();
                     professor1 = (Professor) pessoa;
