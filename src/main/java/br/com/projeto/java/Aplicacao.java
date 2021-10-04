@@ -18,12 +18,13 @@ public class Aplicacao {
         listaProfessores(professores);
         listaLivros(livros);
 
-        Emprestimo status1 = new Emprestimo();
-        status1.status(alunos, professores, livros);
+        Emprestimo emprestimo = new Emprestimo();
+        emprestimo.status(alunos, professores, livros);
+
+        emprestimo.devolver(alunos.get(3),LocalDate.of(2021,10,10),calendario);
 
 
-
-
+        emprestimo.devolver(professores.get(3),LocalDate.of(2021,10,10),calendario);
 
     }
 
