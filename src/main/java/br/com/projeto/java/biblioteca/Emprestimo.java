@@ -4,6 +4,7 @@ import br.com.projeto.java.pessoa.Aluno;
 import br.com.projeto.java.pessoa.Pessoa;
 import br.com.projeto.java.pessoa.Professor;
 
+
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -16,25 +17,20 @@ public class Emprestimo implements Biblioteca {
         public void emprestar(Pessoa pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
 
         if (pessoa instanceof Aluno) {
-            if (pessoa.getDataDevolucao() == null) {
-                if (pessoa.getQtdLivrosEmprestados() < Aluno.QTD_LIVROS) {
-                    Aluno aluno1 = new Aluno();
-                    aluno1 = (Aluno) pessoa;
-                    aluno1.setDataEmprestimo(dataEmprestimo);
-                    int dataDevolucao = calendario.calcularDiasUteis(aluno1.DIAS_UTEIS, dataEmprestimo);
-                    aluno1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
-                    aluno1.setLivros(livros);
-                    aluno1.setQtdLivrosEmprestados(livros.size());
-                } else {
-                    System.out.println("Só pode levar 3 livros");
-                }
+            if (pessoa.getDataDevolucao() == null && pessoa.getQtdLivrosEmprestados() < Aluno.QTD_LIVROS) {
+                Aluno aluno1 = new Aluno();
+                aluno1 = (Aluno) pessoa;
+                aluno1.setDataEmprestimo(dataEmprestimo);
+                int dataDevolucao = calendario.calcularDiasUteis(aluno1.DIAS_UTEIS, dataEmprestimo);
+                aluno1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
+                aluno1.setLivros(livros);
+                aluno1.setQtdLivrosEmprestados(livros.size());
             } else {
-                System.out.println("Não é possivel realizar um novo emprestimo no momento");
+                System.out.println("Não é possivel realizar o emprestimo no momento");
             }
-
-        } else {
-            if (pessoa.getDataDevolucao() == null) {
-                if (pessoa.getQtdLivrosEmprestados() < Professor.QTD_LIVROS) {
+        }
+        else {
+            if (pessoa.getDataDevolucao() == null || (livros.size() <= Professor.QTD_LIVROS_POR_VEZ && pessoa.getQtdLivrosEmprestados() <= Professor.QTD_LIVROS)) {
                     Professor professor1 = new Professor();
                     professor1 = (Professor) pessoa;
                     professor1.setDataEmprestimo(dataEmprestimo);
@@ -42,11 +38,9 @@ public class Emprestimo implements Biblioteca {
                     professor1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
                     professor1.setLivros(livros);
                     professor1.setQtdLivrosEmprestados(livros.size());
-                } else {
-                    System.out.println("Não é possivel realizar um novo emprestimo no momento");
-                }
             } else {
-                System.out.println("Não é possivel realizar um novo emprestimo no momento");
+
+
             }
         }
 
