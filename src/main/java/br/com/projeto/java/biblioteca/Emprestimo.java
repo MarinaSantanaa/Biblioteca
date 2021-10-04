@@ -13,11 +13,7 @@ public class Emprestimo implements Biblioteca {
     Date diaDevolucao;
 
     @Override
-    public void emprestar() {
-
-    }
-
-    public void emprestar(Pessoa pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
+        public void emprestar(Pessoa pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
 
         if (pessoa instanceof Aluno) {
             if (pessoa.getDataDevolucao().equals(null)) {
@@ -57,11 +53,7 @@ public class Emprestimo implements Biblioteca {
     }
 
     @Override
-    public void devolver() {
-
-    }
-
-    public void devolver(Pessoa pessoa, LocalDate data, Calendario calendario) {
+        public void devolver(Pessoa pessoa, LocalDate data, Calendario calendario) {
         pessoa.setDataBloqueio(null);
         pessoa.setQtdDiasBloqueados(0);
         pessoa.setLivros(null);
@@ -89,16 +81,7 @@ public class Emprestimo implements Biblioteca {
     }
 
     @Override
-    public void cadastrarLivro() {
-
-    }
-
-    @Override
-    public void cadastrarPessoa() {
-
-    }
-
-    public void cadastrarLivro(List<Livro> livros) {
+        public void cadastrarLivro(List<Livro> livros) {
         livros.add(new Livro(198276, "Linguagem C - Completa e Descomplicada", "Andre Backes", "GEN LTC"));
         livros.add(new Livro(206743, "Introdução à Programação com Python: Algoritmos e Lógica de Programação", "Nilo Ney Coutinho Menezes", "Novatec Editora"));
         livros.add(new Livro(985432, "Código Limpo", "Robert Cecil Martin", "Alta Books"));
@@ -124,6 +107,7 @@ public class Emprestimo implements Biblioteca {
 
     }
 
+    @Override
     public void cadastrarAluno(List<Aluno> pessoa) {
         pessoa.add(new Aluno("Adan Rudieri", 1001, "adanrudieri@grupoAM.com"));
         pessoa.add(new Aluno("Almir Junior", 1002, "almirjunior@grupoAM.com"));
@@ -147,6 +131,7 @@ public class Emprestimo implements Biblioteca {
         pessoa.add(new Aluno("Thiago Gomes", 1020, "thiagogomes@grupoAM.com"));
     }
 
+    @Override
     public void cadastrarProfessor(List<Professor> pessoa) {
         pessoa.add(new Professor("Jesse Haniel", 7001, "jessehaniel@grupoAM.com"));
         pessoa.add(new Professor("Gabriel Militelo", 7002, "gabrielmilitelo@grupoAM.com"));
@@ -155,30 +140,20 @@ public class Emprestimo implements Biblioteca {
         pessoa.add(new Professor("Camila Lobianco", 7005, "camilalobianco@grupoAM.com"));
 
     }
-
-
-
     @Override
-    public void status() {
-
-    }
-
-    public void status(List<Aluno> alunos, List<Professor> professores, List<Livro> livros) {
-        System.out.println("\nAlunos ativos: \n");
+    public void status(List<Aluno> alunos, List<Professor> professores) {
+        System.out.println("\nLista de alunos com emprestimos: \n");
         for (Aluno aluno : alunos) {
-            System.out.println(aluno.getNome());
+            if (aluno.getQtdLivrosEmprestados() > 0) {
+                System.out.println(aluno.getNome() + ", quantidade de emprestimos " + aluno.getQtdLivrosEmprestados());
+            }
         }
 
-        System.out.println("\nProfessores ativos: \n");
+        System.out.println("\nLista de professores com emprestimos: \n");
         for (Professor professor : professores) {
-            System.out.println(professor.getNome());
-
-        }
-
-        System.out.println("\nLivros ativos: \n");
-        for (Livro livro : livros) {
-            System.out.println(livro.getTitulo());
-
+            if(professor.getQtdLivrosEmprestados() > 0) {
+                System.out.println(professor.getNome() + ", quantidade de emprestimos " + professor.getQtdLivrosEmprestados());
+            }
         }
 
     }

@@ -31,13 +31,13 @@ public class AplicacaoAlmir {
         emprestimo.emprestar(professores.get(1), livroSelecionados, LocalDate.of(2021,10,03), calendario);
         emprestimo.emprestar(professores.get(3), livroSelecionados, LocalDate.of(2021,10,01), calendario);
 
-        emprestimo.status(alunos, professores, livros);
+        emprestimo.status(alunos, professores);
 
         System.out.println("Devolver Livros:");
         emprestimo.devolver(professores.get(1),LocalDate.of(2021,10,10),calendario);
         emprestimo.devolver(alunos.get(3),LocalDate.of(2021,10,20),calendario);
 
-        emprestimo.status(alunos, professores, livros);
+        emprestimo.status(alunos, professores);
 
     }
 }
