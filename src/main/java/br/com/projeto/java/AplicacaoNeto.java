@@ -21,32 +21,44 @@ public class AplicacaoNeto {
         List<Livro> livroSelecionados = new ArrayList<>();
         livroSelecionados.add(livros.get(0));
         livroSelecionados.add(livros.get(3));
-    emprestar(professores.get(1), livroSelecionados, LocalDate.of(2021,10,03), calendario);
-       exibirProfessores(professores);
+        emprestar(professores.get(1), livroSelecionados, LocalDate.of(2021,10,03), calendario);
+        exibirProfessores(professores);
 
 
     }
 
+
+
+
     public static void emprestar(Pessoa pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
 
         if(pessoa instanceof Aluno) {
-            Aluno aluno1 = new Aluno();
-            aluno1 = (Aluno) pessoa;
-            aluno1.setDataEmprestimo(dataEmprestimo);
-           int dataDevolucao = calendario.calcularDiasUteis(aluno1.DIAS_UTEIS, dataEmprestimo);
-           aluno1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
-           aluno1.setLivros(livros);
-           aluno1.setQtdLivrosEmprestados(livros.size());
-        } else {
-            Professor professor1 = new Professor();
-            professor1 = (Professor) pessoa;
-            professor1.setDataEmprestimo(dataEmprestimo);
-            int dataDevolucao = calendario.calcularDiasUteis(professor1.DIAS_UTEIS, dataEmprestimo);
-            professor1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
-            professor1.setLivros(livros);
-            professor1.setQtdLivrosEmprestados(livros.size());
-        }
+            if (pessoa.getDataDevolucao().equals(null) ) {
+                Aluno aluno1 = new Aluno();
+                aluno1 = (Aluno) pessoa;
+                aluno1.setDataEmprestimo(dataEmprestimo);
+                int dataDevolucao = calendario.calcularDiasUteis(aluno1.DIAS_UTEIS, dataEmprestimo);
+                aluno1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
+                aluno1.setLivros(livros);
+                aluno1.setQtdLivrosEmprestados(livros.size());
+            }
+            else {
+                System.out.println("Não é possivel realizar um novo emprestimo no momento");
+            }
 
+        } else {
+            if (pessoa.getDataDevolucao().equals(null)) {
+                Professor professor1 = new Professor();
+                professor1 = (Professor) pessoa;
+                professor1.setDataEmprestimo(dataEmprestimo);
+                int dataDevolucao = calendario.calcularDiasUteis(professor1.DIAS_UTEIS, dataEmprestimo);
+                professor1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
+                professor1.setLivros(livros);
+                professor1.setQtdLivrosEmprestados(livros.size());
+            } else {
+                System.out.println("Não é possivel realizar um novo emprestimo no momento");
+            }
+        }
 
 
     }
