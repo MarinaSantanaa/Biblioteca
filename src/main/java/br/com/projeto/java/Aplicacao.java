@@ -15,9 +15,11 @@ public class Aplicacao {
         List<Livro> livros = new ArrayList();
 
         listaAlunos(alunos);
-        //exibirAlunos(alunos);
         listaProfessores(professores);
         listaLivros(livros);
+
+        Emprestimo status1 = new Emprestimo();
+        status1.status(alunos, professores, livros);
 
 
 
