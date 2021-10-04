@@ -38,7 +38,7 @@ public class AplicacaoAlmir {
         emprestimo.emprestar(professores.get(6), livroSelecionados, LocalDate.of(2021,10,01), calendario);
         emprestimo.emprestar(alunos.get(5), livroSelecionados, LocalDate.of(2021,10,01), calendario);
         emprestimo.emprestar(alunos.get(6), livroSelecionados, LocalDate.of(2021,10,01), calendario);
-        emprestimo.emprestar(alunos.get(7), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(alunos.get(7), livroSelecionados, LocalDate.of(2021,10,05), calendario);
         emprestimo.emprestar(alunos.get(8), livroSelecionados, LocalDate.of(2021,10,01), calendario);
         emprestimo.status(alunos, professores);
 
@@ -52,9 +52,9 @@ public class AplicacaoAlmir {
         emprestimo.status(alunos, professores);
 
         System.out.println("====================================================== Devolver Livros:");
-        emprestimo.devolver(professores.get(1),LocalDate.of(2021,10,10),calendario);
-        emprestimo.devolver(professores.get(6),LocalDate.of(2021,10,10),calendario);
-        emprestimo.devolver(alunos.get(5),LocalDate.of(2021,10,20),calendario);
+        emprestimo.devolver(professores.get(2),LocalDate.of(2021,10,10),calendario);
+        emprestimo.devolver(professores.get(6),LocalDate.of(2021,10,18),calendario);
+        emprestimo.devolver(alunos.get(5),LocalDate.of(2021,10,10),calendario);
         emprestimo.devolver(alunos.get(6),LocalDate.of(2021,10,20),calendario);
         emprestimo.status(alunos, professores);
 

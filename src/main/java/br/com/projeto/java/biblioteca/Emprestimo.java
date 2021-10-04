@@ -58,6 +58,7 @@ public class Emprestimo implements Biblioteca {
         pessoa.setQtdDiasBloqueados(0);
         pessoa.setLivros(null);
         pessoa.setQtdLivrosEmprestados(0);
+
         int diasAtraso = calendario.calcularAtraso(pessoa.getDataDevolucao(), data);
 
         if (diasAtraso > 0) {

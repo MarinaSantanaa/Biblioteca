@@ -60,6 +60,13 @@ public class Calendario{
         LocalDate feriado = proximoFeriado(dataInicio);
         LocalDate data = dataInicio;
 
+        if(dataFim.isBefore(dataInicio)){
+            LocalDate aux;
+            aux = dataInicio;
+            dataInicio = dataFim;
+            dataFim = aux;
+        }
+
         while(!data.isEqual(dataFim)){
             data = data.plusDays(1);
             if(!isDiaUtil(data, feriado)){
