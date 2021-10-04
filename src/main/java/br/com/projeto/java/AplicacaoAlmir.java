@@ -25,7 +25,7 @@ public class AplicacaoAlmir {
 
     }
 
-    private static List listaLivros(List<Livro> livros) {
+    public static List listaLivros(List<Livro> livros) {
         livros.add(new Livro("123","Livro Um", "Autor do Livro 1", "GrupoAM"));
         livros.add(new Livro("456","Livro Dois", "Autor do Livro 2", "GrupoAM"));
         livros.add(new Livro("789","Livro Tres", "Autor do Livro 3", "GrupoAM"));
@@ -39,7 +39,7 @@ public class AplicacaoAlmir {
         return livros;
     }
 
-    private static List listaProfessores(List<Professor> professores) {
+    public static List listaProfessores(List<Professor> professores) {
         professores.add(new Professor("Maria","1","maria@grupoam.com",null,null,null,0,0, null));
         professores.add(new Professor("João","1","joao@grupoam.com", LocalDate.of(2021,10,01),LocalDate.of(2021,10,10),LocalDate.of(2021,10,13),3,0, null));
         professores.add(new Professor("Pedro","1","pedro@grupoam.com",null,null,null,0,0, null));
