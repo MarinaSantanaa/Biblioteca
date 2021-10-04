@@ -56,16 +56,13 @@ public class Calendario{
     }
 
     public int calcularAtraso(LocalDate dataInicio, LocalDate dataFim){
+        if(dataFim.isBefore(dataInicio)){
+            return 0;
+        }
+
         int contador = 0;
         LocalDate feriado = proximoFeriado(dataInicio);
         LocalDate data = dataInicio;
-
-        if(dataFim.isBefore(dataInicio)){
-            LocalDate aux;
-            aux = dataInicio;
-            dataInicio = dataFim;
-            dataFim = aux;
-        }
 
         while(!data.isEqual(dataFim)){
             data = data.plusDays(1);
