@@ -13,7 +13,7 @@ import java.util.List;
 
 public abstract class Pessoa {
     private String nome;
-    private String matricula;
+    private int matricula;
     private String email;
     private LocalDate dataEmprestimo;
     private LocalDate dataDevolucao;
