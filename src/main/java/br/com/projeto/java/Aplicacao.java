@@ -23,9 +23,12 @@ public class Aplicacao {
 
         emprestimo.devolver(alunos.get(3),LocalDate.of(2021,10,10),calendario);
 
+        List<Livro> livroSelecionados = new ArrayList<>();
+        livroSelecionados.add(livros.get(0));
+        livroSelecionados.add(livros.get(3));
 
         emprestimo.devolver(professores.get(3),LocalDate.of(2021,10,10),calendario);
-
+        emprestimo.emprestar(professores.get(1), livroSelecionados, LocalDate.of(2021,10,03), calendario);
     }
 
     private static List listaLivros(List<Livro> livros) {

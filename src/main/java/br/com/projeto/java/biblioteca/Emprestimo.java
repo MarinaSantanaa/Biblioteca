@@ -18,6 +18,45 @@ public class Emprestimo implements Biblioteca {
 
     }
 
+    public void emprestar(Pessoa pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
+
+        if(pessoa instanceof Aluno) {
+            if (pessoa.getDataDevolucao().equals(null)) {
+                if ( pessoa.getQtdLivrosEmprestados() < Aluno.QTD_LIVROS) {
+                    Aluno aluno1 = new Aluno();
+                    aluno1 = (Aluno) pessoa;
+                    aluno1.setDataEmprestimo(dataEmprestimo);
+                    int dataDevolucao = calendario.calcularDiasUteis(aluno1.DIAS_UTEIS, dataEmprestimo);
+                    aluno1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
+                    aluno1.setLivros(livros);
+                    aluno1.setQtdLivrosEmprestados(livros.size());
+                } else {
+                    System.out.println("Só pode levar 3 livros");
+                }
+            }
+            else {
+                System.out.println("Não é possivel realizar um novo emprestimo no momento");
+            }
+
+        } else {
+            if (pessoa.getDataDevolucao().equals(null)) {
+                if ( pessoa.getQtdLivrosEmprestados() < Professor.QTD_LIVROS) {
+                    Professor professor1 = new Professor();
+                    professor1 = (Professor) pessoa;
+                    professor1.setDataEmprestimo(dataEmprestimo);
+                    int dataDevolucao = calendario.calcularDiasUteis(professor1.DIAS_UTEIS, dataEmprestimo);
+                    professor1.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
+                    professor1.setLivros(livros);
+                    professor1.setQtdLivrosEmprestados(livros.size());
+                } else {
+                    System.out.println("Não é possivel realizar um novo emprestimo no momento");}
+            } else {
+                System.out.println("Não é possivel realizar um novo emprestimo no momento");
+            }
+        }
+
+    }
+
     @Override
     public void devolver() {
 
