@@ -16,7 +16,7 @@ public class Emprestimo implements Biblioteca {
         public void emprestar(Pessoa pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
 
         if (pessoa instanceof Aluno) {
-            if (pessoa.getDataDevolucao().equals(null)) {
+            if (pessoa.getDataDevolucao() == null) {
                 if (pessoa.getQtdLivrosEmprestados() < Aluno.QTD_LIVROS) {
                     Aluno aluno1 = new Aluno();
                     aluno1 = (Aluno) pessoa;

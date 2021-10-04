@@ -29,19 +29,33 @@ public class AplicacaoAlmir {
         emprestimo.cadastrarLivro(livros);
 
 
-        System.out.println("Emprestar Livros:");
+        System.out.println("====================================================== Emprestar Livros:");
         List<Livro> livroSelecionados = new ArrayList<>();
         livroSelecionados.add(livros.get(0));
         livroSelecionados.add(livros.get(3));
-        emprestimo.emprestar(professores.get(1), livroSelecionados, LocalDate.of(2021,10,03), calendario);
-        emprestimo.emprestar(professores.get(3), livroSelecionados, LocalDate.of(2021,10,01), calendario);
-
+        emprestimo.emprestar(professores.get(0), livroSelecionados, LocalDate.of(2021,10,03), calendario);
+        emprestimo.emprestar(professores.get(2), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(professores.get(6), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(alunos.get(5), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(alunos.get(6), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(alunos.get(7), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(alunos.get(8), livroSelecionados, LocalDate.of(2021,10,01), calendario);
         emprestimo.status(alunos, professores);
 
-        System.out.println("Devolver Livros:");
-        emprestimo.devolver(professores.get(1),LocalDate.of(2021,10,10),calendario);
-        emprestimo.devolver(alunos.get(3),LocalDate.of(2021,10,20),calendario);
+        System.out.println("====================================================== Emprestar Novamente:");
 
+        // Emprestar novamente
+        emprestimo.emprestar(alunos.get(5), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(alunos.get(6), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(professores.get(2), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.emprestar(professores.get(6), livroSelecionados, LocalDate.of(2021,10,01), calendario);
+        emprestimo.status(alunos, professores);
+
+        System.out.println("====================================================== Devolver Livros:");
+        emprestimo.devolver(professores.get(1),LocalDate.of(2021,10,10),calendario);
+        emprestimo.devolver(professores.get(6),LocalDate.of(2021,10,10),calendario);
+        emprestimo.devolver(alunos.get(5),LocalDate.of(2021,10,20),calendario);
+        emprestimo.devolver(alunos.get(6),LocalDate.of(2021,10,20),calendario);
         emprestimo.status(alunos, professores);
 
 
