@@ -14,9 +14,7 @@ public interface Biblioteca {
 
     void devolver(Pessoa pessoa, LocalDate data, Calendario calendario);
 
-    void bloquear();
-
-    void desbloquear();
+    int bloquear(Calendario calendario, Pessoa pessoa, LocalDate data);
 
     void cadastrarLivro(List<Livro> livros);
 

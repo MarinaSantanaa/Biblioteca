@@ -53,8 +53,13 @@ public class Emprestimo implements Biblioteca {
         pessoa.setLivros(null);
         pessoa.setQtdLivrosEmprestados(0);
 
-        int diasAtraso = calendario.calcularAtraso(pessoa.getDataDevolucao(), data);
+        //int diasAtraso = calendario.calcularAtraso(pessoa.getDataDevolucao(), data);
 
+        int diasAtraso = bloquear(calendario, pessoa, data);
+        if(diasAtraso == 0){
+            pessoa.setQtdDiasBloqueados(diasAtraso);
+            pessoa.setDataBloqueio(data.plusDays(diasAtraso));
+        }
         if (diasAtraso > 0) {
             pessoa.setQtdDiasBloqueados(diasAtraso);
             pessoa.setDataBloqueio(data.plusDays(diasAtraso));
@@ -66,13 +71,13 @@ public class Emprestimo implements Biblioteca {
     }
 
     @Override
-    public void bloquear() {
-
-    }
-
-    @Override
-    public void desbloquear() {
-
+    public int bloquear(Calendario calendario, Pessoa pessoa, LocalDate data) {
+        int diasAtraso = calendario.calcularAtraso(pessoa.getDataDevolucao(), data);
+        if (diasAtraso > 0){
+            pessoa.setQtdDiasBloqueados(diasAtraso);
+            pessoa.setDataBloqueio(data.plusDays(diasAtraso));
+        }
+        return diasAtraso;
     }
 
     @Override
