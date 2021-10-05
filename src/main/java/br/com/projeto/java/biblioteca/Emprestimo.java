@@ -21,6 +21,7 @@ public class Emprestimo implements Biblioteca {
                 pessoa.setQtdLivrosEmprestados(livros.size());
 
             } else {
+                //throw new EmprestimoInvalidoException();
                 System.out.println("Não é possivel realizar o emprestimo no momento");
             }
         }
@@ -36,6 +37,7 @@ public class Emprestimo implements Biblioteca {
                 pessoa.setLivros(livros);
                 pessoa.setQtdLivrosEmprestados(somaLivros);
             } else {
+                //throw new EmprestimoInvalidoException();
                 System.out.println("Não é possivel realizar o emprestimo no momento");
             }
         }
