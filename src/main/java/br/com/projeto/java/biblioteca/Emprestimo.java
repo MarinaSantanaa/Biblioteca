@@ -2,7 +2,7 @@ package br.com.projeto.java.biblioteca;
 
 import br.com.projeto.java.pessoa.Aluno;
 import br.com.projeto.java.pessoa.Pessoa;
-import br.com.projeto.java.pessoa.Professor;git
+import br.com.projeto.java.pessoa.Professor;
 
 
 import java.time.LocalDate;
