@@ -2,7 +2,7 @@ package br.com.projeto.java.biblioteca;
 
 import br.com.projeto.java.pessoa.Aluno;
 import br.com.projeto.java.pessoa.Pessoa;
-import br.com.projeto.java.pessoa.Professor;
+import br.com.projeto.java.pessoa.Professor;git
 
 
 import java.time.LocalDate;
@@ -11,48 +11,48 @@ import java.util.List;
 public class Emprestimo implements Biblioteca {
     @Override
     public void emprestar(Aluno pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
-
-        if (pessoa instanceof Aluno) {
-            if (pessoa.getDataDevolucao() == null && livros.size() <= ((Aluno) pessoa).QTD_LIVROS) {
+        try {
+            if (pessoa.getDataDevolucao() == null && livros.size() <= pessoa.QTD_LIVROS) {
                 pessoa.setDataEmprestimo(dataEmprestimo);
-                int dataDevolucao = calendario.calcularDiasUteis(((Aluno) pessoa).DIAS_UTEIS, dataEmprestimo);
+                int dataDevolucao = calendario.calcularDiasUteis(pessoa.DIAS_UTEIS, dataEmprestimo);
                 pessoa.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
                 pessoa.setLivros(livros);
                 pessoa.setQtdLivrosEmprestados(livros.size());
-
             } else {
-                //throw new EmprestimoInvalidoException();
-                System.out.println("Não é possivel realizar o emprestimo no momento");
+                throw new EmprestimoInvalidoException();
             }
+        } catch (EmprestimoInvalidoException e) {
+            System.out.println(e.getMessage());
         }
     }
+
     @Override
-    public void emprestar(Professor pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) { {
+    public void emprestar(Professor pessoa, List livros, LocalDate dataEmprestimo, Calendario calendario) {
         int somaLivros = livros.size() + pessoa.getQtdLivrosEmprestados();
-            if (pessoa.getDataDevolucao() == null ||
-                    (livros.size() <= ((Professor)pessoa).QTD_LIVROS_POR_VEZ && somaLivros <= Professor.QTD_LIVROS)) {
-                    pessoa.setDataEmprestimo(dataEmprestimo);
-                    int dataDevolucao = calendario.calcularDiasUteis(((Professor)pessoa).DIAS_UTEIS, dataEmprestimo);
+        try {
+            if (livros.size() <= pessoa.QTD_LIVROS_POR_VEZ && somaLivros <= Professor.QTD_LIVROS) {
+                pessoa.setDataEmprestimo(dataEmprestimo);
+                int dataDevolucao = calendario.calcularDiasUteis(((Professor) pessoa).DIAS_UTEIS, dataEmprestimo);
                 pessoa.setDataDevolucao(dataEmprestimo.plusDays(dataDevolucao));
                 pessoa.setLivros(livros);
                 pessoa.setQtdLivrosEmprestados(somaLivros);
             } else {
-                //throw new EmprestimoInvalidoException();
-                System.out.println("Não é possivel realizar o emprestimo no momento");
+                throw new EmprestimoInvalidoException();
             }
+        } catch (EmprestimoInvalidoException e) {
+            System.out.println(e.getMessage());
         }
-
     }
 
     @Override
-        public void devolver(Pessoa pessoa, LocalDate data, Calendario calendario) {
+    public void devolver(Pessoa pessoa, LocalDate data, Calendario calendario) {
         pessoa.setDataBloqueio(null);
         pessoa.setQtdDiasBloqueados(0);
         pessoa.setLivros(null);
         pessoa.setQtdLivrosEmprestados(0);
 
         int diasAtraso = bloquear(calendario, pessoa, data);
-        if(diasAtraso == 0){
+        if (diasAtraso == 0) {
             pessoa.setQtdDiasBloqueados(diasAtraso);
             pessoa.setDataBloqueio(data.plusDays(diasAtraso));
         }
@@ -62,14 +62,12 @@ public class Emprestimo implements Biblioteca {
         }
         pessoa.setDataDevolucao(null);
         pessoa.setDataEmprestimo(null);
-
-
     }
 
     @Override
     public int bloquear(Calendario calendario, Pessoa pessoa, LocalDate data) {
         int diasAtraso = calendario.calcularAtraso(pessoa.getDataDevolucao(), data);
-        if (diasAtraso > 0){
+        if (diasAtraso > 0) {
             pessoa.setQtdDiasBloqueados(diasAtraso);
             pessoa.setDataBloqueio(data.plusDays(diasAtraso));
         }
@@ -77,7 +75,7 @@ public class Emprestimo implements Biblioteca {
     }
 
     @Override
-        public void cadastrarLivro(List<Livro> livros) {
+    public void cadastrarLivro(List<Livro> livros) {
         livros.add(new Livro(198276, "Linguagem C - Completa e Descomplicada", "Andre Backes", "GEN LTC"));
         livros.add(new Livro(206743, "Introdução à Programação com Python: Algoritmos e Lógica de Programação", "Nilo Ney Coutinho Menezes", "Novatec Editora"));
         livros.add(new Livro(985432, "Código Limpo", "Robert Cecil Martin", "Alta Books"));
@@ -136,6 +134,7 @@ public class Emprestimo implements Biblioteca {
         pessoa.add(new Professor("Camila Lobianco", 7005, "camilalobianco@grupoAM.com"));
 
     }
+
     @Override
     public void status(List<Aluno> alunos, List<Professor> professores) {
         System.out.println("\nLista de alunos com emprestimos: \n");
@@ -147,7 +146,7 @@ public class Emprestimo implements Biblioteca {
 
         System.out.println("\nLista de professores com emprestimos: \n");
         for (Professor professor : professores) {
-            if(professor.getQtdLivrosEmprestados() > 0) {
+            if (professor.getQtdLivrosEmprestados() > 0) {
                 System.out.println(professor.getNome() + ", quantidade de emprestimos " + professor.getQtdLivrosEmprestados());
             }
         }
